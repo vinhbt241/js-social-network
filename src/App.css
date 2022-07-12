@@ -6,7 +6,8 @@
   --background: #ddd6fe;
   --secondary: #fff;
   --header-font: #000;
-  --para-font: #666;
+  --para-font: #000;
+  --shadow-color: #b4b4bb;
 }
 
 body {
@@ -22,11 +23,17 @@ body {
   width: 100vw;
   min-height: 100vh;
   background-color: var(--background);
+
+  box-sizing: border-box;
+  padding-top: 5vh;
 }
 
 .Sidebar {
   height: 100vh;
   width: 13vw;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   background-color: var(--primary);
   color: var(--secondary);
@@ -72,3 +79,77 @@ body {
 
   transition: border .4s ease
 }
+
+.PostContainer {
+  width: 45vw;
+
+  margin-left: 15vw;
+}
+
+.Post {
+  width: 100%;
+  background: linear-gradient(to right, #ffa500, #ffa500 10px, var(--secondary) 10px, var(--secondary));
+  padding: 1.5em;
+  box-sizing: border-box;
+
+  border-radius: 10px;
+  box-shadow: 2px 4px 4px 2px var(--shadow-color);
+
+  font-size: 1.2em;
+  font-weight: lighter;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.uploader-info {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+.uploader-info > img {
+  background-color: gray;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%; 
+}
+
+.uploader-info > h1 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+  color: var(--header-font)
+}
+
+.Post p {
+  margin: 0;
+  padding: 0;
+
+  text-align: justify;
+}
+
+.post-img {
+  width: 100%;
+  height: 40vh;
+  background-color: gray;
+}
+
+.user-interactions {
+  list-style-type: none;
+  margin: 0;
+  padding: .5em 3em;
+
+  border-top: 1px solid var(--shadow-color);
+  border-bottom: 1px solid var(--shadow-color);
+
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 3em;
+  font-size: 1.1em;
+}
+
