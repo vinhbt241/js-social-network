@@ -1,3 +1,4 @@
+import { Associates } from "./Associates"
 import { PostContainer } from "./PostContainer"
 import { Sidebar } from "./Sidebar"
 
@@ -6,6 +7,7 @@ const Home = () => {
     <div className="Home">
       <Sidebar />
       <PostContainer />
+      <Associates />
     </div>
   )
 }

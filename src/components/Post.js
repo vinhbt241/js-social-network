@@ -42,17 +42,17 @@ const Post = (props) => {
         </li>
         <li>
           <Comment 
-            userName="Comment 1"
+            userName="Comment 2"
             content="blah blah"/>
         </li>
         <li>
           <Comment 
-            userName="Comment 1"
+            userName="Comment 3"
             content="blah blah"/>
         </li>
         <li>
           <Comment 
-            userName="Comment 1"
+            userName="Comment 4"
             content="blah blah"/>
         </li>
       </ul>

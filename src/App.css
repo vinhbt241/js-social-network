@@ -80,7 +80,7 @@ ul {
 .PostContainer {
   width: 50vw;
 
-  margin-left: 22vw;
+  margin-left: 23vw;
 }
 
 .Post {
@@ -175,11 +175,11 @@ ul {
   gap: 1.5em;
 }
 
-.in-comment {
+.small-font {
   font-size: .8em;
 }
 
-.in-comment > img {
+.small-font > img {
   height: 50px;
   width: 50px;
 }
@@ -187,4 +187,46 @@ ul {
 .Comment > p {
   margin-left: 3em;
   text-align: justify;
+}
+
+.Associates {
+  position: fixed;
+  right: 3vw;
+  top: 3vh;
+  width: 20vw;
+  height: 94vh;
+  background-color: var(--secondary);
+
+  font-size: 1.2em;
+
+  border-radius: 10px;
+  box-shadow: 2px 4px 4px 2px var(--shadow-color);
+  padding: 1.5em;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.Associates h1 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+
+.friend-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.online-status {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.is-online {
+  background-color: green;
 }
