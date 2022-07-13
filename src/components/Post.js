@@ -2,11 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
+import { Comment } from './Comment';
 
 const Post = (props) => {
   return(
     <div className="Post">
-      <div className="uploader-info">
+      <div className="user-info">
         <img src={props.userImg} alt=""/>
         <h1>{props.userName}</h1>
       </div>
@@ -32,6 +33,29 @@ const Post = (props) => {
           <button className="post-btn">
             <FontAwesomeIcon icon={faShare}/> Share
           </button>
+        </li>
+      </ul>
+
+      <ul className="comments-container">
+        <li>
+          <Comment 
+            userName="Comment 1"
+            content="blah blah"/>
+        </li>
+        <li>
+          <Comment 
+            userName="Comment 1"
+            content="blah blah"/>
+        </li>
+        <li>
+          <Comment 
+            userName="Comment 1"
+            content="blah blah"/>
+        </li>
+        <li>
+          <Comment 
+            userName="Comment 1"
+            content="blah blah"/>
         </li>
       </ul>
     </div>

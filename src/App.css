@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 
-
 :root {
   --primary: #7e22ce;
   --background: #ddd6fe;
@@ -17,15 +16,19 @@ body {
 
   font-family: 'Roboto', sans-serif;
   color: var(--para-font);
-}
 
-.Home {
   width: 100vw;
   min-height: 100vh;
   background-color: var(--background);
-
   box-sizing: border-box;
-  padding-top: 5vh;
+  padding-top: 3vh;
+  padding-bottom: 10vh;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .Sidebar {
@@ -61,8 +64,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2em;
-
-  list-style-type: none;
 }
 
 .NavLink {
@@ -70,14 +71,10 @@ body {
   gap: .5em;
   width: fit-content;
   border-bottom: 1px solid var(--primary);
-
-  transition: border .4s ease;
 }
 
 .NavLink:hover {
   border-bottom: 1px solid var(--secondary);
-
-  transition: border .4s ease
 }
 
 .PostContainer {
@@ -103,24 +100,33 @@ body {
   gap: 1em;
 }
 
-.uploader-info {
+.user-info {
   display: flex;
   align-items: center;
   gap: .5em;
 }
 
-.uploader-info > img {
+.user-info > img {
   background-color: gray;
   height: 70px;
   width: 70px;
   border-radius: 50%; 
 }
 
-.uploader-info > h1 {
+.user-info > img:hover {
+  filter: brightness(50%);
+}
+
+.user-info > h1 {
   font-size: 1.2em;
   margin: 0;
   padding: 0;
-  color: var(--header-font)
+  color: var(--header-font);
+  border-bottom: 1px solid var(--secondary);
+}
+
+.user-info > h1:hover {
+  border-bottom: 1px solid black;
 }
 
 .Post p {
@@ -137,7 +143,6 @@ body {
 }
 
 .user-interactions {
-  list-style-type: none;
   margin: 0;
   padding: .5em 3em;
 
@@ -164,3 +169,22 @@ body {
   background-color: inherit;
 }
 
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.Comment > .user-info {
+  font-size: .8em;
+}
+
+.Comment > .user-info > img {
+  height: 50px;
+  width: 50px;
+}
+
+.Comment > p {
+  margin-left: 3em;
+  text-align: justify;
+}
