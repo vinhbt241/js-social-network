@@ -100,24 +100,24 @@ ul {
   gap: 1em;
 }
 
-.user-info {
+.UserInfo {
   display: flex;
   align-items: center;
   gap: .5em;
 }
 
-.user-info > img {
+.UserInfo > img {
   background-color: gray;
   height: 70px;
   width: 70px;
   border-radius: 50%; 
 }
 
-.user-info > img:hover {
+.UserInfo > img:hover {
   filter: brightness(50%);
 }
 
-.user-info > h1 {
+.UserInfo > h1 {
   font-size: 1.2em;
   margin: 0;
   padding: 0;
@@ -125,7 +125,7 @@ ul {
   border-bottom: 1px solid var(--secondary);
 }
 
-.user-info > h1:hover {
+.UserInfo > h1:hover {
   border-bottom: 1px solid black;
 }
 
@@ -175,11 +175,11 @@ ul {
   gap: 1.5em;
 }
 
-.Comment > .user-info {
+.in-comment {
   font-size: .8em;
 }
 
-.Comment > .user-info > img {
+.in-comment > img {
   height: 50px;
   width: 50px;
 }

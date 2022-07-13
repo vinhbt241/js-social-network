@@ -3,14 +3,12 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { Comment } from './Comment';
+import { UserInfo } from './UserInfo';
 
 const Post = (props) => {
   return(
     <div className="Post">
-      <div className="user-info">
-        <img src={props.userImg} alt=""/>
-        <h1>{props.userName}</h1>
-      </div>
+       <UserInfo userImg={props.userImg} userName={props.userName}/>
       <p>{props.description}</p>
       <img src={props.postImg} alt="" className="post-img"/>
 
