@@ -17,13 +17,21 @@ const Post = (props) => {
 
       <ul className="user-interactions">
         <li>
-         {props.numLikes} <FontAwesomeIcon icon={faThumbsUp}/> Like
+          {props.numLikes} 
+          <button className="post-btn">
+            <FontAwesomeIcon icon={faThumbsUp}/> Like
+          </button>
         </li>
         <li> 
-          <FontAwesomeIcon icon={faComment}/> Comment
+          {props.numComments} 
+          <button className="post-btn">
+            <FontAwesomeIcon icon={faComment}/> Comment
+          </button>
         </li>
         <li>
-          <FontAwesomeIcon icon={faShare}/> Share
+          <button className="post-btn">
+            <FontAwesomeIcon icon={faShare}/> Share
+          </button>
         </li>
       </ul>
     </div>

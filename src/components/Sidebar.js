@@ -21,7 +21,7 @@ const Sidebar = () => {
           <FontAwesomeIcon icon={faUserCircle}/> Profile
         </li>
         <li className='NavLink'>
-          <FontAwesomeIcon icon={faUserFriends}/> Friends
+          <FontAwesomeIcon icon={faUserFriends}/> Friends Requests
         </li>
         <li className='NavLink'>
           <FontAwesomeIcon icon={faScrewdriverWrench}/> Settings
