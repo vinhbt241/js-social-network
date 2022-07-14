@@ -26,7 +26,9 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className='NavLink'>
-          <FontAwesomeIcon icon={faUserFriends}/> Friends Requests
+          <Link to="/friend-requests" className="unstyle-link">
+            <FontAwesomeIcon icon={faUserFriends}/> Friends Requests
+          </Link>
         </li>
         <li className='NavLink'>
           <FontAwesomeIcon icon={faScrewdriverWrench}/> Settings

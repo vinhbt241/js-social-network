@@ -232,3 +232,64 @@ ul {
   text-decoration: none;
   color: inherit
 }
+
+.FriendRequests {
+  min-height: 100vh;
+  width: 74vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}
+
+.request-box {
+  background-color: var(--secondary);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+
+  border-radius: 15px;
+  overflow: hidden;
+
+  box-shadow: 2px 4px 4px 2px var(--shadow-color);
+}
+
+.request-box > button {
+  width: 80%;
+  margin-bottom: 1em;
+  font-size: 1em;
+  padding: .5em 0;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+}
+
+.request-box > button:hover {
+  filter: brightness(90%);
+}
+
+.user-info-in-request-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.user-info-in-request-box img {
+  width: 14vw;
+  height: 14vw;
+  border-radius: 0;
+}
+
+.primary-color-bg {
+  background-color: var(--primary);
+  color: var(--secondary)
+}
+
+.request-container {
+  display: flex;
+  gap: 1em;
+
+  flex-wrap: wrap;
+}
