@@ -21,8 +21,7 @@ body {
   min-height: 100vh;
   background-color: var(--background);
   box-sizing: border-box;
-  padding-top: 3vh;
-  padding-bottom: 10vh;
+  padding: 3vh 0 10vh 23vw;
 }
 
 ul {
@@ -79,8 +78,6 @@ ul {
 
 .PostContainer {
   width: 50vw;
-
-  margin-left: 23vw;
 }
 
 .Post {
@@ -229,4 +226,9 @@ ul {
 
 .is-online {
   background-color: green;
+}
+
+.unstyle-link {
+  text-decoration: none;
+  color: inherit
 }

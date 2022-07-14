@@ -4,6 +4,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { faVaadin } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return(
@@ -15,10 +16,14 @@ const Sidebar = () => {
 
       <ul>
         <li className='NavLink'>
-          <FontAwesomeIcon icon={faHome}/> Home
+          <Link to="/" className="unstyle-link">
+            <FontAwesomeIcon icon={faHome}/> Home
+          </Link>
         </li>
         <li className='NavLink'>
-          <FontAwesomeIcon icon={faUserCircle}/> Profile
+          <Link to="/profile" className="unstyle-link">
+            <FontAwesomeIcon icon={faUserCircle}/> Profile
+          </Link>
         </li>
         <li className='NavLink'>
           <FontAwesomeIcon icon={faUserFriends}/> Friends Requests
