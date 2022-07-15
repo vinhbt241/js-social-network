@@ -31,7 +31,9 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className='NavLink'>
-          <FontAwesomeIcon icon={faScrewdriverWrench}/> Settings
+          <Link to="/setting" className="unstyle-link">
+            <FontAwesomeIcon icon={faScrewdriverWrench}/> Settings
+          </Link>
         </li>
       </ul>
     </div>

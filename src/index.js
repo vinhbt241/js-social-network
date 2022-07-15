@@ -9,16 +9,18 @@ import App from './App';
 import { FriendRequests } from './components/FriendRequests';
 import { Home } from './components/Home';
 import { Profile } from './components/Profile';
+import { Setting } from './components/Setting';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route path="/" element={<App />} >
           <Route index element={<Home />} />
           <Route path="profile" element={<Profile />} />
           <Route path="friend-requests" element={<FriendRequests />} />
+          <Route path="setting" element={<Setting />} />
         </Route>
       </Routes>
     </BrowserRouter>

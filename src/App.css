@@ -235,8 +235,9 @@ ul {
   color: inherit
 }
 
-.FriendRequests, .Profile {
-  min-height: 94vh;
+.FriendRequests, 
+.Profile,
+.Setting {
   width: 74vw;
 
   display: flex;
