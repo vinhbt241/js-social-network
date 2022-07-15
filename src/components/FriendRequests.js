@@ -4,7 +4,7 @@ import { Sidebar } from "./Sidebar"
 
 const FriendRequests = (props) => {
   return(
-    <div className="FriendRequest">
+    <div className="FriendRequests">
       <Sidebar />
 
       <div>
