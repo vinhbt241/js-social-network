@@ -8,6 +8,12 @@ const PostContainer = () => {
        description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sed corporis voluptate recusandae, doloribus velit at harum voluptas labore eum, aut alias? Amet, debitis nam. Consequuntur est qui sunt quis. "
        numLikes="312"
        numComments="777"/>
+
+      <Post 
+       userName="User 1"
+       description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sed corporis voluptate recusandae, doloribus velit at harum voluptas labore eum, aut alias? Amet, debitis nam. Consequuntur est qui sunt quis. "
+       numLikes="312"
+       numComments="777"/>
     </div>
   )
 }

@@ -78,6 +78,10 @@ ul {
 
 .PostContainer {
   width: 50vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
 }
 
 .Post {
