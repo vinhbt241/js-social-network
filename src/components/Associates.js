@@ -1,30 +1,24 @@
 import { UserInfo } from "./UserInfo"
 
 const Associates = (props) => {
+  const listFriends = props.friends.map(friend => {
+    return(
+      <li key={friend.id} className="friend-status">
+        <UserInfo userName={friend.name} classToAdd="small-font" />
+        {friend.is_online ? 
+          <span className="online-status is-online"></span> :
+          <span className="online-status"></span>
+        }
+      </li>
+    )
+  })
+
   return(
-    <div className="Associates">
+    <ul className="Associates">
       <h1>Associates</h1>
 
-      <div className="friend-status">
-        <UserInfo userImg={props.userImg} userName="Friend 1" classToAdd="small-font"/>
-        <span className="online-status is-online"></span>
-      </div>
-
-      <div className="friend-status">
-        <UserInfo userImg={props.userImg} userName="Friend 2" classToAdd="small-font"/>
-        <span className="online-status"></span>
-      </div>
-
-      <div className="friend-status">
-        <UserInfo userImg={props.userImg} userName="Friend 3" classToAdd="small-font"/>
-        <span className="online-status is-online"></span>
-      </div>
-
-      <div className="friend-status">
-        <UserInfo userImg={props.userImg} userName="Friend 4" classToAdd="small-font"/>
-        <span className="online-status"></span>
-      </div>
-    </div>
+      {listFriends}
+    </ul>
   )
 }
 
