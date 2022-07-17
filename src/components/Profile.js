@@ -4,7 +4,7 @@ import { Post } from "./Post";
 import { useEffect, useState } from "react";
 
 const USER_API_URL = "http://127.0.0.1:3000/api/users/1"
-const USER_POST_API_URL = "http://127.0.0.1:3000/api/posts/1"
+const USER_POST_API_URL = "http://127.0.0.1:3000/api/users/1/user_posts"
 
 const Profile = (props) => {
   const [userInfo, setUserInfo] = useState("Loading...");

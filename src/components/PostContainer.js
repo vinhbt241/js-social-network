@@ -1,20 +1,23 @@
 import { Post } from "./Post"
 
-const PostContainer = () => {
-  return(
-    <div className="PostContainer">
-      <Post 
-       userName="User 1"
-       description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sed corporis voluptate recusandae, doloribus velit at harum voluptas labore eum, aut alias? Amet, debitis nam. Consequuntur est qui sunt quis. "
-       numLikes="312"
-       numComments="777"/>
+const PostContainer = (props) => {
 
-      <Post 
-       userName="User 1"
-       description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sed corporis voluptate recusandae, doloribus velit at harum voluptas labore eum, aut alias? Amet, debitis nam. Consequuntur est qui sunt quis. "
-       numLikes="312"
-       numComments="777"/>
-    </div>
+  const listPosts = props.posts.map(post => {
+    return(
+      <li key={post.id}>
+        <Post 
+          userName={post.user.name}
+          description={post.content} 
+          numLikes="0" 
+          numComments="0" />
+      </li>
+    )
+  })
+
+  return(
+    <ul className="PostContainer">
+      {listPosts}
+    </ul>
   )
 }
 
