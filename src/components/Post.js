@@ -10,9 +10,24 @@ import { getData } from '../utilities';
 const Post = (props) => {
   const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
   const LIKE_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/likes`;
+  const USER_API_URL = "http://127.0.0.1:3000/api/users/1";
 
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
+  const [userInfo, setUserInfo] = useState("");
+  const [displayComments, setDisplayComments] = useState(false);
+
+  const setupDisplay = () => {
+    setDisplayComments(true);
+
+    getData(USER_API_URL).then(userData => {
+      setUserInfo(userData);
+    })
+  }
+
+  const handleUserComment = (event) => {
+    event.preventDefault();
+  }
 
   useEffect(() => {
     getData(COMMENTS_API_URL).then(commentsData => {
@@ -20,7 +35,7 @@ const Post = (props) => {
     })
 
     getData(LIKE_API_URL).then(likesData => {
-      setLikes(likesData)
+      setLikes(likesData);
     })
   }, [])
 
@@ -49,7 +64,9 @@ const Post = (props) => {
         </li>
         <li> 
           {comments.length} 
-          <button className="post-btn">
+          <button 
+            className="post-btn"
+            onClick={setupDisplay}>
             <FontAwesomeIcon icon={faComment}/> Comment
           </button>
         </li>
@@ -60,9 +77,24 @@ const Post = (props) => {
         </li>
       </ul>
 
-      <ul className="comments-container">
-        {listComments}
-      </ul>
+      {displayComments &&
+        <div>
+          <form className='comment-form' onSubmit={handleUserComment}>
+            <UserInfo classToAdd="small-font"/>
+            <input 
+              type="text" 
+              name="comment-content" 
+              placeholder='Write comment'
+              className="comment-input"/>
+            <input type="submit" hidden/>
+          </form>
+
+          <ul className="comments-container">
+          {listComments}
+          </ul>
+        </div>
+      }
+      
     </div>
   )
 }

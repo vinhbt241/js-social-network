@@ -344,3 +344,21 @@ ul {
   flex-direction: column;
   gap: 3em;
 }
+
+.comment-form {
+  display: flex;
+  margin-bottom: 1.5em;
+}
+
+.comment-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1em;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+}
+
+.comment-input:focus {
+  outline: none;
+}
