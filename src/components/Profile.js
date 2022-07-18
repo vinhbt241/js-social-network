@@ -4,10 +4,10 @@ import { Post } from "./Post";
 import { useEffect, useState } from "react";
 import { getData } from "../utilities";
 
-const USER_API_URL = "http://127.0.0.1:3000/api/users/1"
-const USER_POST_API_URL = "http://127.0.0.1:3000/api/users/1/user_posts"
-
 const Profile = (props) => {
+  const USER_API_URL = "http://127.0.0.1:3000/api/users/1"
+  const USER_POST_API_URL = "http://127.0.0.1:3000/api/users/1/user_posts"
+
   const [userInfo, setUserInfo] = useState("Loading...");
   const [userPosts, setUserPosts] = useState([]);
 
@@ -27,7 +27,6 @@ const Profile = (props) => {
         <Post 
           userName={post.user.name}
           description={post.content} 
-          numLikes="0" 
           postID = {post.id} />
       </li>
     )

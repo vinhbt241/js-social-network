@@ -7,8 +7,6 @@ const PostContainer = (props) => {
         <Post 
           userName={post.user.name}
           description={post.content} 
-          numLikes="0" 
-          numComments="0"
           postID = {post.id} />
       </li>
     )

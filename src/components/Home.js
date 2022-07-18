@@ -4,10 +4,10 @@ import { Associates } from "./Associates"
 import { PostContainer } from "./PostContainer"
 import { Sidebar } from "./Sidebar"
 
-const FRIENDS_API_URL = "http://127.0.0.1:3000/api/users/1/friends";
-const POSTS_API_URL = "http://127.0.0.1:3000/api/users/1/user_and_friends_posts"
-
 const Home = () => {
+  const FRIENDS_API_URL = "http://127.0.0.1:3000/api/users/1/friends";
+  const POSTS_API_URL = "http://127.0.0.1:3000/api/users/1/user_and_friends_posts"
+
   const [friends, setFriends] = useState([]);
   const [posts, setPosts] = useState([]);
 

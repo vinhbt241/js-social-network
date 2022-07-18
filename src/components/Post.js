@@ -8,13 +8,19 @@ import { useEffect, useState } from 'react';
 import { getData } from '../utilities';
 
 const Post = (props) => {
-  const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`
+  const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
+  const LIKE_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/likes`;
 
   const [comments, setComments] = useState([]);
+  const [likes, setLikes] = useState([]);
 
   useEffect(() => {
     getData(COMMENTS_API_URL).then(commentsData => {
       setComments(commentsData);
+    })
+
+    getData(LIKE_API_URL).then(likesData => {
+      setLikes(likesData)
     })
   }, [])
 
@@ -34,11 +40,9 @@ const Post = (props) => {
       <p>{props.description}</p>
       <img src={props.postImg} alt="" className="post-img"/>
 
-
-
       <ul className="user-interactions">
         <li>
-          {props.numLikes} 
+          {likes.length} 
           <button className="post-btn">
             <FontAwesomeIcon icon={faThumbsUp}/> Like
           </button>
