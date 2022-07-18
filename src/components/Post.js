@@ -6,6 +6,7 @@ import { Comment } from './Comment';
 import { UserInfo } from './UserInfo';
 import { useEffect, useState } from 'react';
 import { getData } from '../utilities';
+import { v4 as uuidv4 } from 'uuid';
 
 const Post = (props) => {
   const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
@@ -26,6 +27,16 @@ const Post = (props) => {
   }
 
   const handleUserComment = (event) => {
+    let userComment = event.target["comment_content"].value
+
+    setComments(prevComments => [{
+      id: uuidv4(),
+      user: {name: userInfo.name},
+      content: userComment
+    },...prevComments]);
+
+    event.target["comment_content"].value = ""
+
     event.preventDefault();
   }
 
@@ -83,7 +94,7 @@ const Post = (props) => {
             <UserInfo classToAdd="small-font"/>
             <input 
               type="text" 
-              name="comment-content" 
+              name="comment_content" 
               placeholder='Write comment'
               className="comment-input"/>
             <input type="submit" hidden/>
