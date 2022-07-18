@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { getData } from "../utilities";
 import { Associates } from "./Associates"
 import { PostContainer } from "./PostContainer"
 import { Sidebar } from "./Sidebar"
@@ -10,26 +11,14 @@ const Home = () => {
   const [friends, setFriends] = useState([]);
   const [posts, setPosts] = useState([]);
 
-  const getFriends = async () => {
-    const response = await fetch(FRIENDS_API_URL);
-    const data = await response.json();
-    return data;
-  }
-
-  const getPosts = async () => {
-    const response = await fetch(POSTS_API_URL);
-    const data = await response.json();
-    return data;
-  }
-
   useEffect(() => {
-    getFriends().then(friendsData => {
-      setFriends(friendsData);
-    });
+    getData(FRIENDS_API_URL).then(friendsData => {
+      setFriends(friendsData)
+    })
 
-    getPosts().then(postsData => {
+    getData(POSTS_API_URL).then(postsData => {
       setPosts(postsData)
-    });
+    })
   }, [])
 
   return(
