@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 const Post = (props) => {
   const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
   const USER_API_URL = "http://127.0.0.1:3000/api/users/1";
+  const POST_COMMENT_API_URL = "http://127.0.0.1:3000/api/comments"
 
   const [comments, setComments] = useState([]);
   const [userInfo, setUserInfo] = useState("");
@@ -33,8 +34,22 @@ const Post = (props) => {
     }
   }
 
-  const handleUserComment = (event) => {
+  const handleUserComment = async (event) => {
+    event.preventDefault();
+
     let userComment = event.target["comment_content"].value
+
+    await fetch(POST_COMMENT_API_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        content: userComment,
+        post_id: props.postID,
+        user_id: userInfo.id
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
 
     setComments(prevComments => [{
       id: uuidv4(),
@@ -43,8 +58,6 @@ const Post = (props) => {
     },...prevComments]);
 
     event.target["comment_content"].value = ""
-
-    event.preventDefault();
   }
 
   const listComments = comments.map(comment => {
