@@ -4,29 +4,33 @@ import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { Comment } from './Comment';
 import { UserInfo } from './UserInfo';
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { getData } from '../utilities';
 import { v4 as uuidv4 } from 'uuid';
 
 const Post = (props) => {
   const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
-  const LIKE_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/likes`;
   const USER_API_URL = "http://127.0.0.1:3000/api/users/1";
 
   const [comments, setComments] = useState([]);
   const [userInfo, setUserInfo] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
+  const ref = useRef();
 
   const setupDisplay = () => {
-    setDisplayComments(true);
+    if(displayComments === false) {
+      setDisplayComments(true);
 
-    getData(USER_API_URL).then(userData => {
-      setUserInfo(userData);
-    })
+      getData(USER_API_URL).then(userData => {
+        setUserInfo(userData);
+      })
 
-    getData(COMMENTS_API_URL).then(commentsData => {
-      setComments(commentsData);
-    });
+      getData(COMMENTS_API_URL).then(commentsData => {
+        setComments(commentsData);
+      });
+    } else {
+      ref.current.focus();
+    }
   }
 
   const handleUserComment = (event) => {
@@ -89,7 +93,8 @@ const Post = (props) => {
               type="text" 
               name="comment_content" 
               placeholder='Write comment'
-              className="comment-input"/>
+              className="comment-input"
+              ref={ref}/>
             <input type="submit" hidden/>
           </form>
 
