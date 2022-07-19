@@ -4,16 +4,19 @@ import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { Comment } from './Comment';
 import { UserInfo } from './UserInfo';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getData } from '../utilities';
 import { v4 as uuidv4 } from 'uuid';
 
 const Post = (props) => {
   const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
+  const LIKES_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/likes`;
   const USER_API_URL = "http://127.0.0.1:3000/api/users/1";
-  const POST_COMMENT_API_URL = "http://127.0.0.1:3000/api/comments"
+  const POST_COMMENT_API_URL = "http://127.0.0.1:3000/api/comments";
+  const POST_LIKE_API_URL = "http://127.0.0.1:3000/api/likes"
 
   const [comments, setComments] = useState([]);
+  const [likes, setLikes] = useState([]);
   const [userInfo, setUserInfo] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
   const ref = useRef();
@@ -21,10 +24,6 @@ const Post = (props) => {
   const setupDisplay = () => {
     if(displayComments === false) {
       setDisplayComments(true);
-
-      getData(USER_API_URL).then(userData => {
-        setUserInfo(userData);
-      })
 
       getData(COMMENTS_API_URL).then(commentsData => {
         setComments(commentsData);
@@ -60,6 +59,51 @@ const Post = (props) => {
     event.target["comment_content"].value = ""
   }
 
+  const userLikedPost = () => {
+    for (const like of likes) {
+      if(like.user_id === userInfo.id) {
+        return true
+      }
+    }
+
+    return false;
+  }
+
+  const handleUserLike = async () => {
+    if(userLikedPost()) {
+      setLikes(prevLikes => prevLikes.filter(like => like.user_id !== userInfo.id))
+
+      // destroy likes
+    } else {
+      setLikes(prevLikes => [{
+        id: uuidv4(),
+        post_id: props.postID,
+        user_id: userInfo.id
+      }, ...prevLikes])
+
+      // await fetch(POST_LIKE_API_URL, {
+      //   method: "POST",
+      //   body: JSON.stringify({
+      //     post_id: props.postID,
+      //     user_id: userInfo.id
+      //   }),
+      //   headers: {
+      //     "Content-type": "application/json; charset=UTF-8"
+      //   }
+      // })
+    }
+  }
+
+  useEffect(() => {
+    getData(USER_API_URL).then(userData => {
+      setUserInfo(userData);
+    })
+
+    getData(LIKES_API_URL).then(likesData => {
+      setLikes(likesData)
+    })
+  }, [])
+
   const listComments = comments.map(comment => {
     return(
       <li key={comment.id}>
@@ -78,8 +122,10 @@ const Post = (props) => {
 
       <ul className="user-interactions">
         <li>
-          {props.numLikes} 
-          <button className="post-btn">
+          {likes.length} 
+          <button 
+            className="post-btn"
+            onClick={handleUserLike}>
             <FontAwesomeIcon icon={faThumbsUp}/> Like
           </button>
         </li>

@@ -28,7 +28,6 @@ const Profile = (props) => {
           userName={post.user.name}
           description={post.content} 
           postID = {post.id}
-          numLikes = {post.num_likes}
           numComments = {post.num_comments} />
       </li>
     )
