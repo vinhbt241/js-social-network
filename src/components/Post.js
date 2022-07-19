@@ -14,7 +14,6 @@ const Post = (props) => {
   const USER_API_URL = "http://127.0.0.1:3000/api/users/1";
 
   const [comments, setComments] = useState([]);
-  const [likes, setLikes] = useState([]);
   const [userInfo, setUserInfo] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
 
@@ -24,6 +23,10 @@ const Post = (props) => {
     getData(USER_API_URL).then(userData => {
       setUserInfo(userData);
     })
+
+    getData(COMMENTS_API_URL).then(commentsData => {
+      setComments(commentsData);
+    });
   }
 
   const handleUserComment = (event) => {
@@ -39,16 +42,6 @@ const Post = (props) => {
 
     event.preventDefault();
   }
-
-  useEffect(() => {
-    getData(COMMENTS_API_URL).then(commentsData => {
-      setComments(commentsData);
-    })
-
-    getData(LIKE_API_URL).then(likesData => {
-      setLikes(likesData);
-    })
-  }, [])
 
   const listComments = comments.map(comment => {
     return(
@@ -68,13 +61,13 @@ const Post = (props) => {
 
       <ul className="user-interactions">
         <li>
-          {likes.length} 
+          {props.numLikes} 
           <button className="post-btn">
             <FontAwesomeIcon icon={faThumbsUp}/> Like
           </button>
         </li>
         <li> 
-          {comments.length} 
+          {props.numComments} 
           <button 
             className="post-btn"
             onClick={setupDisplay}>
