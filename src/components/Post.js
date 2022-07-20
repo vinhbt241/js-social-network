@@ -124,7 +124,8 @@ const Post = (props) => {
     <div className="Post">
        <UserInfo userImg={props.userImg} userName={props.userName}/>
       <p>{props.description}</p>
-      <img src={props.postImg} alt="" className="post-img"/>
+
+      <img src={props.postImgUrl} alt="" className="post-img"/>
 
       <ul className="user-interactions">
         <li>

@@ -8,7 +8,8 @@ const PostContainer = (props) => {
           userName={post.user.name}
           description={post.content} 
           postID = {post.id}
-          numComments = {post.num_comments} />
+          numComments = {post.num_comments}
+          postImgUrl={post.image_url} />
       </li>
     )
   })
