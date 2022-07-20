@@ -59,10 +59,10 @@ const Post = (props) => {
     event.target["comment_content"].value = ""
   }
 
-  const userLikedPost = () => {
+  const userLike = () => {
     for (const like of likes) {
       if(like.user_id === userInfo.id) {
-        return true
+        return like
       }
     }
 
@@ -70,27 +70,33 @@ const Post = (props) => {
   }
 
   const handleUserLike = async () => {
-    if(userLikedPost()) {
-      setLikes(prevLikes => prevLikes.filter(like => like.user_id !== userInfo.id))
+    let userLikedPost = userLike();
 
-      // destroy likes
+    if(userLikedPost !== false) {
+      if(!userLikedPost.hasOwnProperty("generated_at_frontend")) {
+        const DELETE_LIKE_API_URL = POST_LIKE_API_URL + `/${userLikedPost.id}`;
+        await fetch(DELETE_LIKE_API_URL, {method: "DELETE"})
+      }
+
+      setLikes(prevLikes => prevLikes.filter(like => like.user_id !== userInfo.id));
     } else {
+      await fetch(POST_LIKE_API_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          post_id: props.postID,
+          user_id: userInfo.id
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+
       setLikes(prevLikes => [{
         id: uuidv4(),
         post_id: props.postID,
-        user_id: userInfo.id
+        user_id: userInfo.id,
+        generated_at_frontend: true
       }, ...prevLikes])
-
-      // await fetch(POST_LIKE_API_URL, {
-      //   method: "POST",
-      //   body: JSON.stringify({
-      //     post_id: props.postID,
-      //     user_id: userInfo.id
-      //   }),
-      //   headers: {
-      //     "Content-type": "application/json; charset=UTF-8"
-      //   }
-      // })
     }
   }
 
