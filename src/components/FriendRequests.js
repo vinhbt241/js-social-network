@@ -11,28 +11,28 @@ const FriendRequests = (props) => {
         <h1>Friend Invites</h1>
         <ul className="request-container">
           <li>
-            <FriendInvite userName="User 1"/>
+            <FriendInvite user={{name: "User 1"}}/>
           </li>
           <li>
-            <FriendInvite userName="User 2"/>
+            <FriendInvite user={{name: "User 1"}}/>
           </li>
           <li>
-            <FriendInvite userName="User 3"/>
+            <FriendInvite user={{name: "User 1"}}/>
           </li>
           <li>
-            <FriendInvite userName="User 4"/>
+            <FriendInvite user={{name: "User 1"}}/>
           </li>
           <li>
-            <FriendInvite userName="User 5"/>
+            <FriendInvite user={{name: "User 1"}}/>
           </li>
           <li>
-            <FriendInvite userName="User 6"/>
+            <FriendInvite user={{name: "User 1"}}/>
           </li>
           <li>
-            <FriendInvite userName="User 7"/>
+            <FriendInvite user={{name: "User 1"}}/>
           </li>
           <li>
-            <FriendInvite userName="User 8"/>
+            <FriendInvite user={{name: "User 1"}}/>
           </li>
         </ul>
       </div>
@@ -41,28 +41,28 @@ const FriendRequests = (props) => {
         <h1>Let's know each other!</h1>
         <ul className="request-container">
           <li>
-            <AddFriendRequest userName="User 1"/>
+            <AddFriendRequest user={{name: "User 1"}}/>
           </li>
           <li>
-            <AddFriendRequest userName="User 1"/>
+            <AddFriendRequest user={{name: "User 1"}}/>
           </li>
           <li>
-            <AddFriendRequest userName="User 1"/>
+            <AddFriendRequest user={{name: "User 1"}}/>
           </li>
           <li>
-            <AddFriendRequest userName="User 1"/>
+            <AddFriendRequest user={{name: "User 1"}}/>
           </li>
           <li>
-            <AddFriendRequest userName="User 1"/>
+            <AddFriendRequest user={{name: "User 1"}}/>
           </li>
           <li>
-            <AddFriendRequest userName="User 1"/>
+            <AddFriendRequest user={{name: "User 1"}}/>
           </li>
           <li>
-            <AddFriendRequest userName="User 1"/>
+            <AddFriendRequest user={{name: "User 1"}}/>
           </li>
           <li>
-            <AddFriendRequest userName="User 1"/>
+            <AddFriendRequest user={{name: "User 1"}}/>
           </li>
         </ul>
       </div>
