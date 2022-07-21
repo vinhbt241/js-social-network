@@ -25,7 +25,7 @@ const Profile = (props) => {
     return(
       <li key={post.id}>
         <Post 
-          userName={post.user.name}
+          user={post.serializer_user}
           description={post.content} 
           postID = {post.id}
           numComments = {post.num_comments}
@@ -38,8 +38,8 @@ const Profile = (props) => {
     <div className="Profile">
       <Sidebar />
       <div className="user-img-section">
-        <img src={props.userBackgroundImage} alt="USER BACKGROUND IMG" className="user-bg-img"/>
-        <UserInfo userName={userInfo.name} classToAdd="user-info-in-profile"/>
+        <img src={userInfo.background_image_url} alt="USER BACKGROUND IMG" className="user-bg-img"/>
+        <UserInfo user={userInfo} classToAdd="user-info-in-profile"/>
       </div>
 
       <ul className="profile-post-container">

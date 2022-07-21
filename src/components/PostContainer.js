@@ -5,7 +5,7 @@ const PostContainer = (props) => {
     return(
       <li key={post.id}>
         <Post 
-          userName={post.user.name}
+          user={post.serializer_user}
           description={post.content} 
           postID = {post.id}
           numComments = {post.num_comments}

@@ -114,7 +114,7 @@ const Post = (props) => {
     return(
       <li key={comment.id}>
         <Comment 
-          userName={comment.user.name}
+          user={comment.serializer_user}
           content={comment.content}/>
       </li>
     )
@@ -122,7 +122,8 @@ const Post = (props) => {
 
   return(
     <div className="Post">
-       <UserInfo userImg={props.userImg} userName={props.userName}/>
+      <UserInfo user={props.user}/>
+      
       <p>{props.description}</p>
 
       <img src={props.postImgUrl} alt="" className="post-img"/>
@@ -154,7 +155,10 @@ const Post = (props) => {
       {displayComments &&
         <div>
           <form className='comment-form' onSubmit={handleUserComment}>
-            <UserInfo classToAdd="small-font"/>
+            <UserInfo 
+              user={userInfo}
+              classToAdd="small-font"
+              hideName={true}/>
             <input 
               type="text" 
               name="comment_content" 
