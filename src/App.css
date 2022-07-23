@@ -379,8 +379,26 @@ ul {
 
   font-size: 1.2em;
   font-weight: lighter;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.PostForm-content-input {
-  width: 100% ;
+.PostForm input {
+  font-size: 1em;
+}
+
+
+.PostForm-content {
+  display: flex;
+}
+
+.PostForm-content > input {
+  width: 100%;
+  border: none;
+  padding: 1em;
+}
+
+.PostForm-content > input:focus {
+  outline: none;
 }
