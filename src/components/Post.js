@@ -11,13 +11,11 @@ import { v4 as uuidv4 } from 'uuid';
 const Post = (props) => {
   const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
   const LIKES_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/likes`;
-  const USER_API_URL = "http://127.0.0.1:3000/api/users/1";
   const POST_COMMENT_API_URL = "http://127.0.0.1:3000/api/comments";
   const POST_LIKE_API_URL = "http://127.0.0.1:3000/api/likes"
 
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
-  const [userInfo, setUserInfo] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
   const ref = useRef();
 
@@ -43,7 +41,7 @@ const Post = (props) => {
       body: JSON.stringify({
         content: userComment,
         post_id: props.postID,
-        user_id: userInfo.id
+        user_id: props.currentUser.id
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
@@ -52,7 +50,7 @@ const Post = (props) => {
 
     setComments(prevComments => [{
       id: uuidv4(),
-      user: {name: userInfo.name},
+      user: {name: props.currentUser.name},
       content: userComment
     },...prevComments]);
 
@@ -61,7 +59,7 @@ const Post = (props) => {
 
   const userLike = () => {
     for (const like of likes) {
-      if(like.user_id === userInfo.id) {
+      if(like.user_id === props.currentUser.id) {
         return like
       }
     }
@@ -78,13 +76,13 @@ const Post = (props) => {
         await fetch(DELETE_LIKE_API_URL, {method: "DELETE"})
       }
 
-      setLikes(prevLikes => prevLikes.filter(like => like.user_id !== userInfo.id));
+      setLikes(prevLikes => prevLikes.filter(like => like.user_id !== props.currentUser.id));
     } else {
       await fetch(POST_LIKE_API_URL, {
         method: "POST",
         body: JSON.stringify({
           post_id: props.postID,
-          user_id: userInfo.id
+          user_id: props.currentUser.id
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8"
@@ -94,17 +92,13 @@ const Post = (props) => {
       setLikes(prevLikes => [{
         id: uuidv4(),
         post_id: props.postID,
-        user_id: userInfo.id,
+        user_id: props.currentUser.id,
         generated_at_frontend: true
       }, ...prevLikes])
     }
   }
 
   useEffect(() => {
-    getData(USER_API_URL).then(userData => {
-      setUserInfo(userData);
-    })
-
     getData(LIKES_API_URL).then(likesData => {
       setLikes(likesData)
     })
@@ -156,7 +150,7 @@ const Post = (props) => {
         <div>
           <form className='comment-form' onSubmit={handleUserComment}>
             <UserInfo 
-              user={userInfo}
+              user={props.currentUser}
               classToAdd="small-font"
               hideName={true}/>
             <input 

@@ -9,7 +9,8 @@ const PostContainer = (props) => {
           description={post.content} 
           postID = {post.id}
           numComments = {post.num_comments}
-          postImgUrl={post.image_url} />
+          postImgUrl={post.image_url}
+          currentUser={props.currentUser} />
       </li>
     )
   })

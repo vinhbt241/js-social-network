@@ -117,7 +117,7 @@ ul {
 }
 
 .UserInfo > img:hover {
-  filter: brightness(50%);
+  filter: brightness(80%);
 }
 
 .UserInfo > h1 {
@@ -361,4 +361,26 @@ ul {
 
 .comment-input:focus {
   outline: none;
+}
+
+.PostForm {
+  width: 50vw;
+  height: 20vh;
+  background-color: var(--secondary);
+
+  margin-bottom: 3em;
+
+  background: linear-gradient(to right, #ffa500, #ffa500 10px, var(--secondary) 10px, var(--secondary));
+  padding: 1.5em;
+  box-sizing: border-box;
+
+  border-radius: 10px;
+  box-shadow: 2px 4px 4px 2px var(--shadow-color);
+
+  font-size: 1.2em;
+  font-weight: lighter;
+}
+
+.PostForm-content-input {
+  width: 100% ;
 }
