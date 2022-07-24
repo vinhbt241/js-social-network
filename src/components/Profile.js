@@ -8,7 +8,7 @@ const Profile = (props) => {
   const USER_API_URL = "http://127.0.0.1:3000/api/users/1"
   const USER_POST_API_URL = "http://127.0.0.1:3000/api/users/1/user_posts"
 
-  const [userInfo, setUserInfo] = useState("Loading...");
+  const [userInfo, setUserInfo] = useState("");
   const [userPosts, setUserPosts] = useState([]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Profile = (props) => {
     <div className="Profile">
       <Sidebar />
       <div className="user-img-section">
-        <img src={userInfo.background_image_url} alt="USER BACKGROUND IMG" className="user-bg-img"/>
+        <img src={userInfo.background_image_url} alt="" className="user-bg-img"/>
         <UserInfo user={userInfo} classToAdd="user-info-in-profile"/>
       </div>
 
