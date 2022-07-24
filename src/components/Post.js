@@ -11,8 +11,8 @@ import { v4 as uuidv4 } from 'uuid';
 const Post = (props) => {
   const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
   const LIKES_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/likes`;
-  const POST_COMMENT_API_URL = "http://127.0.0.1:3000/api/comments";
-  const POST_LIKE_API_URL = "http://127.0.0.1:3000/api/likes"
+  const CREATE_COMMENT_API_URL = "http://127.0.0.1:3000/api/comments";
+  const MODIFY_LIKE_API_URL = "http://127.0.0.1:3000/api/likes"
 
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
@@ -36,7 +36,7 @@ const Post = (props) => {
 
     let userComment = event.target["comment_content"].value
 
-    await fetch(POST_COMMENT_API_URL, {
+    await fetch(CREATE_COMMENT_API_URL, {
       method: "POST",
       body: JSON.stringify({
         content: userComment,
@@ -72,13 +72,13 @@ const Post = (props) => {
 
     if(userLikedPost !== false) {
       if(!userLikedPost.hasOwnProperty("generated_at_frontend")) {
-        const DELETE_LIKE_API_URL = POST_LIKE_API_URL + `/${userLikedPost.id}`;
+        const DELETE_LIKE_API_URL = MODIFY_LIKE_API_URL + `/${userLikedPost.id}`;
         await fetch(DELETE_LIKE_API_URL, {method: "DELETE"})
       }
 
       setLikes(prevLikes => prevLikes.filter(like => like.user_id !== props.currentUser.id));
     } else {
-      await fetch(POST_LIKE_API_URL, {
+      await fetch(MODIFY_LIKE_API_URL, {
         method: "POST",
         body: JSON.stringify({
           post_id: props.postID,

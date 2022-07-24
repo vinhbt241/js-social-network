@@ -363,9 +363,9 @@ ul {
   outline: none;
 }
 
-.PostForm {
+.PostForm-container {
   width: 50vw;
-  height: 20vh;
+  min-height: 20vh;
   background-color: var(--secondary);
 
   margin-bottom: 3em;
@@ -378,27 +378,56 @@ ul {
   box-shadow: 2px 4px 4px 2px var(--shadow-color);
 
   font-size: 1.2em;
-  font-weight: lighter;
-
-  display: flex;
-  flex-direction: column;
 }
 
-.PostForm input {
+.PostForm {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.PostForm * {
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
   font-size: 1em;
 }
 
 
-.PostForm-content {
+.PostForm-content{
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  overflow: auto;
+  font-size: 1em;
+  resize: none;
   display: flex;
 }
 
-.PostForm-content > input {
-  width: 100%;
-  border: none;
-  padding: 1em;
+.PostForm-content:focus {
+  outline: none;
 }
 
-.PostForm-content > input:focus {
-  outline: none;
+#PostForm-file {
+  display: none;
+}
+
+.PostForm-file-btn {
+  font-size: 1.7em;
+  width: fit-content;
+  border: none;
+}
+
+.PostForm-submit {
+  font-weight: bold;
+  padding: .5em 1em;
+  width: fit-content;
+  margin: auto;
+  border-radius: 15px;
+  border: none;
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+.PostForm-submit:hover {
+  filter: brightness(80%);
 }
