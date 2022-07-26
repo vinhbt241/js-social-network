@@ -3,10 +3,14 @@ import { UserInfo } from "./UserInfo";
 import { Post } from "./Post";
 import { useEffect, useState } from "react";
 import { getData } from "../utilities";
+import { useParams } from "react-router-dom";
 
 const Profile = (props) => {
-  const USER_API_URL = "http://127.0.0.1:3000/api/users/1"
-  const USER_POST_API_URL = "http://127.0.0.1:3000/api/users/1/user_posts"
+  let params = useParams();
+  const userId = params.id
+
+  const USER_API_URL = `http://127.0.0.1:3000/api/users/${userId}`
+  const USER_POST_API_URL = `http://127.0.0.1:3000/api/users/${userId}/user_posts`
 
   const [userInfo, setUserInfo] = useState("");
   const [userPosts, setUserPosts] = useState([]);

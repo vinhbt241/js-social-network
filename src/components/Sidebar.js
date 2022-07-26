@@ -7,8 +7,9 @@ import { faVaadin } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
-  return(
+  const currentUser = JSON.parse(localStorage.user);
 
+  return(
     <div className="Sidebar">
       <h1>
         <FontAwesomeIcon icon={faVaadin}/> Virtuoso
@@ -21,7 +22,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className='NavLink'>
-          <Link to="/profile" className="unstyle-link">
+          <Link to={`/profile/${currentUser.id}`} className="unstyle-link">
             <FontAwesomeIcon icon={faUserCircle}/> Profile
           </Link>
         </li>

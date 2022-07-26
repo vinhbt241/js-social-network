@@ -19,7 +19,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} >
           <Route index element={<Home />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile/:id" element={<Profile />} />
           <Route path="friend-requests" element={<FriendRequests />} />
           <Route path="setting" element={<Setting />} />
           <Route path="login" element={<Login />} />
