@@ -44,13 +44,15 @@ const Post = (props) => {
         user_id: props.currentUser.id
       }),
       headers: {
-        "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json; charset=UTF-8",
+        Accept: "application/json",
+        Authorization: localStorage.token
       }
     })
 
     setComments(prevComments => [{
       id: uuidv4(),
-      user: {name: props.currentUser.name},
+      serializer_user: props.currentUser,
       content: userComment
     },...prevComments]);
 
@@ -73,7 +75,14 @@ const Post = (props) => {
     if(userLikedPost !== false) {
       if(!userLikedPost.hasOwnProperty("generated_at_frontend")) {
         const DELETE_LIKE_API_URL = MODIFY_LIKE_API_URL + `/${userLikedPost.id}`;
-        await fetch(DELETE_LIKE_API_URL, {method: "DELETE"})
+        await fetch(DELETE_LIKE_API_URL, {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            Accept: "application/json",
+            Authorization: localStorage.token
+          }
+        })
       }
 
       setLikes(prevLikes => prevLikes.filter(like => like.user_id !== props.currentUser.id));
@@ -85,7 +94,9 @@ const Post = (props) => {
           user_id: props.currentUser.id
         }),
         headers: {
-          "Content-type": "application/json; charset=UTF-8"
+          "Content-type": "application/json; charset=UTF-8",
+          Accept: "application/json",
+          Authorization: localStorage.token
         }
       })
 

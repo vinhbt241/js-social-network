@@ -20,7 +20,10 @@ const PostForm = (props) => {
 
     await fetch(CREATE_POST_API_URL, {
       method: "POST",
-      body: formData
+      body: formData,
+      headers: {
+        Authorization: localStorage.token
+      }
     })
 
     document.location.reload();
