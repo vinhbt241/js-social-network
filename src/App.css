@@ -465,9 +465,16 @@ ul {
 
 .login-form > label > input {
   width: 100%;
-  padding: .5em;
+  padding: .5em 1em;
   box-sizing: border-box;
   margin-top: .5em;
+
+  border-radius: 15px;
+  border: 1px solid grey;
+}
+
+.login-form > label > input:focus {
+  outline: 1px solid var(--primary);
 }
 
 .login-form-submit {
@@ -476,12 +483,14 @@ ul {
   width: 100%;
   padding: .5em 1em;
   margin: auto;
-  border-radius: 10px;
+  border-radius: 15px;
   border: none;
   background-color: var(--primary);
   color: var(--secondary);
+  margin-top: 1em;
 }
 
 .login-form-submit:hover {
   filter: brightness(80%);
 }
+
