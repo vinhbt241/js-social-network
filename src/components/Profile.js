@@ -35,7 +35,7 @@ const Profile = (props) => {
   })
 
   return(
-    <div className="Profile">
+    <div className="Profile normal-page">
       <Sidebar />
       <div className="user-img-section">
         <img src={userInfo.background_image_url} alt="" className="user-bg-img"/>

@@ -8,6 +8,7 @@ import {
 import App from './App';
 import { FriendRequests } from './components/FriendRequests';
 import { Home } from './components/Home';
+import { Login } from './components/Login';
 import { Profile } from './components/Profile';
 import { Setting } from './components/Setting';
 
@@ -21,6 +22,7 @@ root.render(
           <Route path="profile" element={<Profile />} />
           <Route path="friend-requests" element={<FriendRequests />} />
           <Route path="setting" element={<Setting />} />
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>

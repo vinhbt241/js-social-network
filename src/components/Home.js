@@ -29,7 +29,7 @@ const Home = () => {
   }, [])
 
   return(
-    <div className="Home">
+    <div className="Home normal-page">
       <Sidebar />
       <div>
         <PostForm currentUser={currentUser} />

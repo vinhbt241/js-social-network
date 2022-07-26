@@ -2,7 +2,7 @@ import { Sidebar } from "./Sidebar"
 
 const Setting = (props) => {
   return(
-    <div className="Setting">
+    <div className="Setting normal-page">
       <Sidebar />
       SETTING PAGE
     </div>  
