@@ -11,6 +11,7 @@ import { Home } from './components/Home';
 import { Login } from './components/Login';
 import { Profile } from './components/Profile';
 import { Setting } from './components/Setting';
+import { SignUp } from './components/SignUp';
 import { PrivateRoute } from './PrivateRoute';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,6 +25,7 @@ root.render(
           <Route path="friend-requests" element={<PrivateRoute><FriendRequests /></PrivateRoute>} />
           <Route path="setting" element={<PrivateRoute><Setting /></PrivateRoute>} />
           <Route path="login" element={<Login />} />
+          <Route path="sign-up" element={<SignUp />} />
         </Route>
       </Routes>
     </BrowserRouter>

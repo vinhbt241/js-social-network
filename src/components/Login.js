@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const LOGIN_API_URL = "http://127.0.0.1:3000/api/sessions";
 
   const navigate = useNavigate();
 
-  const processLoginForm = async (event) => {
+  const processLogin = async (event) => {
     event.preventDefault();
 
     let userEmail = event.target["email"].value;
@@ -27,7 +27,7 @@ const Login = (props) => {
     const data = await response.json();
 
     if(data.error) {
-      alert(data.error);
+      alert("Wrong email or password, please try again");
     } else {
       localStorage.setItem("user", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
@@ -38,18 +38,22 @@ const Login = (props) => {
 
   return(
     <div className="Login">
-      <form className="login-form" onSubmit={processLoginForm}>
+      <form className="authentication-form" onSubmit={processLogin}>
         <label>
           Email: 
-          <input type="email" name="email"/>
+          <input type="email" name="email" required/>
         </label>
         <label>
           Password: 
-          <input type="password" name="password" />
+          <input type="password" name="password" required/>
         </label>
 
-        <input className="login-form-submit" type="submit" value="Log in" />
+        <input className="authentication-submit" type="submit" value="Log in" />
       </form>
+
+      <Link to="/sign-up" className="unstyle-link authentication-link">
+        New member? Click here to sign up.
+      </Link>
     </div>
   )
 }

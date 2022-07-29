@@ -436,10 +436,13 @@ ul {
 }
 
 .Login {
-  width: 50vw;
-  margin: auto;
-  height: 100vh;
+  width: 100vw;
+  min-height: 100vh;
   box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   padding-top: 20vh;
 }
@@ -449,21 +452,38 @@ ul {
   font-family: 'Roboto', sans-serif;
 }
 
-.login-form {
-  width: 30%;
+.SignUp {
+  width: 100vw;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
-  margin: auto;
+  align-items: center;
+
+  padding-top: 20vh;
+}
+
+.SignUp * {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+}
+
+.authentication-form {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
   gap: 1em;
   box-sizing: border-box;
 }
 
-.login-form > label {
+.authentication-form > label {
   display: flex;
   flex-direction: column;
 }
 
-.login-form > label > input {
+.authentication-form > label > input {
   width: 100%;
   padding: .5em 1em;
   box-sizing: border-box;
@@ -473,11 +493,11 @@ ul {
   border: 1px solid grey;
 }
 
-.login-form > label > input:focus {
+.authentication-form > label > input:focus {
   outline: 1px solid var(--primary);
 }
 
-.login-form-submit {
+.authentication-submit {
   font-size: 1em;
   font-weight: bold;
   width: 100%;
@@ -490,7 +510,7 @@ ul {
   margin-top: 1em;
 }
 
-.login-form-submit:hover {
+.authentication-submit:hover {
   filter: brightness(80%);
 }
 
@@ -499,3 +519,13 @@ button:disabled {
   color: var(--primary);
   border: 1px solid var(--primary);
 }
+
+.authentication-link {
+  margin-top: 1em;
+}
+
+.authentication-link:hover {
+  color: var(--primary)
+}
+
+
