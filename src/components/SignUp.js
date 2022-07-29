@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
-const SignUp = (props) => {
+const SignUp = () => {
+  const SIGN_UP_API_URL = "http://127.0.0.1:3000/api/users";
+
+  const navigate = useNavigate();
+
   const processSignUp = async (event) => {
     event.preventDefault();
 
@@ -13,7 +17,27 @@ const SignUp = (props) => {
       let name = event.target["name"].value; 
       let email = event.target["email"].value;
 
-      console.log(name, email, password, passwordConfirm)
+      const response = await fetch(SIGN_UP_API_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+          passwordConfirm: passwordConfirm
+        }),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+      })
+
+      const data = await response.json();
+
+      if(data.error) {
+        alert("User email already exist, please try using other email");
+      } else {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
+  
+        navigate('/');
+      }
     }
   }
 
