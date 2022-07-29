@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getData } from "../utilities";
 import { useParams } from "react-router-dom";
 
-const Profile = (props) => {
+const Profile = () => {
   let params = useParams();
   const userId = params.id
 
@@ -23,7 +23,7 @@ const Profile = (props) => {
     getData(USER_POST_API_URL).then(postsData => {
       setUserPosts(postsData)
     })
-  },[])
+  },[userId])
 
   const listPosts = userPosts.map(post => {
     return(

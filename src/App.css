@@ -110,7 +110,7 @@ ul {
   gap: .5em;
 }
 
-.UserInfo > img {
+.UserInfo img {
   background-color: gray;
   height: 70px;
   width: 70px;
@@ -119,11 +119,11 @@ ul {
   overflow: hidden;
 }
 
-.UserInfo > img:hover {
+.UserInfo img:hover {
   filter: brightness(80%);
 }
 
-.UserInfo > h1 {
+.UserInfo h1 {
   font-size: 1.2em;
   margin: 0;
   padding: 0;
@@ -131,7 +131,7 @@ ul {
   border-bottom: 1px solid var(--secondary);
 }
 
-.UserInfo > h1:hover {
+.UserInfo h1:hover {
   border-bottom: 1px solid black;
 }
 
