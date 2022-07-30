@@ -533,19 +533,19 @@ button:disabled {
   color: inherit;
   background-color: inherit;
   font-size: 1em;
-  font-weight: bold;
   font-family: 'Roboto', sans-serif;
+  font-weight: bold;
   width: fit-content;
 }
 
-.user-profile-display {
+.user-profile-display,
+.user-account-display {
   width: 50vw;
   background: linear-gradient(to right, #ffa500, #ffa500 10px, var(--secondary) 10px, var(--secondary));
   padding: 1.5em;
   box-sizing: border-box;
 
   border-radius: 10px;
-  box-shadow: 2px 4px 4px 2px var(--shadow-color);
 
   font-size: 1.2em;
   font-weight: lighter;
@@ -554,9 +554,16 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   gap: 1em;
+
+  position: relative;
 }
 
-.update-profile-section {
+.user-profile-display h1,
+.user-account-display h1 {
+  font-size: 1.3em;
+}
+
+.update-section {
   width: 100%;
   display: flex;
 
@@ -577,5 +584,64 @@ button:disabled {
   object-fit: contain;
   overflow: hidden;
 }
+
+.fixed-background {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.update-button {
+  font-weight: lighter;
+  color: var(--primary);
+}
+
+.update-button:hover {
+  filter: brightness(60%);
+}
+
+.close-form-button {
+  position: absolute;
+  font-size: 2em;
+
+  top: 1em;
+  right: 1em;
+
+  width: 1.5em;
+  height: 1.5em;
+
+  border-radius: 50%;
+  border: none;
+}
+
+.toggle-update-display {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #ffa500, #ffa500 10px, var(--secondary) 10px, var(--secondary));
+  border-radius: 10px;
+  font-size: 1.2em;
+  width: 50vw;
+  padding: 1.5em;
+  box-sizing: border-box;
+  margin: auto;
+  border: none;
+  box-shadow: 2px 4px 4px 2px var(--shadow-color);
+}
+
+.toggle-update-display:hover {
+  filter: brightness(80%)
+}
+
+
 
 
