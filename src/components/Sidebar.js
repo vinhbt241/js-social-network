@@ -4,10 +4,20 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { faVaadin } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-router-dom';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const currentUser = JSON.parse(localStorage.user);
+
+  const navigate = useNavigate();
+
+  const processLogout = () => {
+    navigate('/login');
+
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("user");
+  }
 
   return(
     <div className="Sidebar">
@@ -35,6 +45,11 @@ const Sidebar = () => {
           <Link to="/setting" className="unstyle-link">
             <FontAwesomeIcon icon={faScrewdriverWrench}/> Settings
           </Link>
+        </li>
+        <li className='NavLink'>
+          <button className='unstyle-button' onClick={processLogout}>
+            <FontAwesomeIcon icon={faPowerOff}/> Logout
+          </button>
         </li>
       </ul>
     </div>
