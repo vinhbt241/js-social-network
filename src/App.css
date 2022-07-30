@@ -538,8 +538,7 @@ button:disabled {
   width: fit-content;
 }
 
-.user-profile-display,
-.user-account-display {
+.display-container {
   width: 50vw;
   background: linear-gradient(to right, #ffa500, #ffa500 10px, var(--secondary) 10px, var(--secondary));
   padding: 1.5em;
@@ -558,8 +557,7 @@ button:disabled {
   position: relative;
 }
 
-.user-profile-display h1,
-.user-account-display h1 {
+.display-container h1 {
   font-size: 1.3em;
 }
 
@@ -639,9 +637,65 @@ button:disabled {
 }
 
 .toggle-update-display:hover {
+  filter: brightness(80%);
+}
+
+.update-form-label {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  font-weight: bold;
+  gap: .5em;
+
+  font-size: 1.3em;
+}
+
+.update-form-input { 
+  width: 15vw;
+  padding: .5em;
+  border-radius: 15px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: .8em;
+}
+
+.update-form-input:focus {
+  outline: 1px solid var(--primary);
+}
+
+.update-form-submit {
+  font-size: .8em;
+  font-weight: bold;
+
+  padding: .5em 2em;
+  border-radius: 15px;
+  border: none;
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+.update-form-submit:hover {
   filter: brightness(80%)
 }
 
+.hidden-input {
+  visibility: hidden;
+}
+
+.update-form-name {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.update-image-click {
+  font-size: .8em;
+  font-weight: lighter;
+}
+
+.update-image-click:hover {
+  color: var(--primary)
+}
 
 
 
