@@ -19,7 +19,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} >
+        <Route path="/js-social-network/" element={<App />} >
           <Route index element={<PrivateRoute><Home /></PrivateRoute>} />
           <Route path="profile/:id" element={<PrivateRoute><Profile /></PrivateRoute>} />
           <Route path="friend-requests" element={<PrivateRoute><FriendRequests /></PrivateRoute>} />
