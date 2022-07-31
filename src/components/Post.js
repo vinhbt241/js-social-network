@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { Comment } from './Comment';
 import { UserInfo } from './UserInfo';
 import { useEffect, useRef, useState } from 'react';
@@ -148,11 +147,6 @@ const Post = (props) => {
             className="post-btn"
             onClick={setupDisplay}>
             <FontAwesomeIcon icon={faComment}/> Comment
-          </button>
-        </li>
-        <li>
-          <button className="post-btn">
-            <FontAwesomeIcon icon={faShare}/> Share
           </button>
         </li>
       </ul>
