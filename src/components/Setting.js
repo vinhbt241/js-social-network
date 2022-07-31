@@ -21,6 +21,8 @@ const Setting = () => {
 
   const [nameUpdated, setNameUpdated] = useState(false);
   const [passwordUpdated, setPasswordUpdated] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState(currentUser.avatar_url);
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState(currentUser.background_image_url)
 
   const processUpdateName = async (event) => {
     event.preventDefault();
@@ -80,6 +82,28 @@ const Setting = () => {
     } else {
       setPasswordUpdated(true);
     }
+  }
+
+  const displayPreviewAvatar = (event) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if(reader.readyState === 2) {
+        setAvatarUrl(reader.result);
+      }
+    }
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+  const displayPreviewBackground = (event) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if(reader.readyState === 2) {
+        setBackgroundImageUrl(reader.result);
+      }
+    }
+
+    reader.readAsDataURL(event.target.files[0]);
   }
 
   return(
@@ -237,10 +261,14 @@ const Setting = () => {
                 <FontAwesomeIcon icon={faImage} /> Choose Image
               </div>
 
-              <input type="file" className="hidden-input" />
+              <input 
+                type="file" 
+                className="hidden-input" 
+                accept="image/*"
+                onChange={displayPreviewAvatar}/>
             </label>
 
-            <img src={currentUser.avatar_url} alt="" className="user-avatar-in-settings"/>
+            <img src={avatarUrl} alt="" className="user-avatar-in-settings"/>
 
             <input className="update-form-submit" type="submit" value="Change" />
 
@@ -265,10 +293,14 @@ const Setting = () => {
                 <FontAwesomeIcon icon={faImage} /> Choose Image
               </div>
 
-              <input type="file" className="hidden-input" />
+              <input 
+                type="file" 
+                className="hidden-input" 
+                accept="image/*"
+                onChange={displayPreviewBackground}/>
             </label>
 
-            <img src={currentUser.background_image_url} alt="" className="user-bg-img-in-settings"/>
+            <img src={backgroundImageUrl} alt="" className="user-bg-img-in-settings"/>
 
             <input className="update-form-submit" type="submit" value="Change" />
 

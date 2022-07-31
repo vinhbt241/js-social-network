@@ -429,6 +429,7 @@ ul {
   border: none;
   background-color: var(--primary);
   color: var(--secondary);
+  margin-top: 1em;
 }
 
 .PostForm-submit:hover {

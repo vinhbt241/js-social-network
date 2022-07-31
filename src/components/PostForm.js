@@ -1,9 +1,23 @@
 import { UserInfo } from "./UserInfo";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const PostForm = (props) => {
   const CREATE_POST_API_URL = "http://127.0.0.1:3000/api/posts";
+
+  const [postImageUrl, setPostImageUrl] = useState("");
+
+  const displayPreviewPostImage = (event) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if(reader.readyState === 2) {
+        setPostImageUrl(reader.result);
+      }
+    }
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
 
   const handlePostSubmit = async (event) => {
     event.preventDefault();
@@ -49,7 +63,12 @@ const PostForm = (props) => {
         <input
           type="file"
           name="image"
-          id="PostForm-file" />
+          id="PostForm-file" 
+          accept="image/*"
+          onChange={displayPreviewPostImage}/>
+
+        <img src={postImageUrl} alt="" className="post-img"/>
+
         <input
           type="submit"
           value="Post"
