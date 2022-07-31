@@ -7,8 +7,8 @@ import { getData } from "../utilities";
 const FriendRequests = (props) => {
   const currentUser = JSON.parse(localStorage.user);
 
-  const PENDING_FRIENDS_API_URL = `http://127.0.0.1:3000/api/users/${currentUser.id}/pending_friends`;
-  const POTENTIAL_FRIENDS_API_URL = `http://127.0.0.1:3000/api/users/${currentUser.id}/potential_friends`;
+  const PENDING_FRIENDS_API_URL = `https://virtuoso-social-network.herokuapp.com/api/users/${currentUser.id}/pending_friends`;
+  const POTENTIAL_FRIENDS_API_URL = `https://virtuoso-social-network.herokuapp.com/api/users/${currentUser.id}/potential_friends`;
 
   const [pendingFriends, setPendingFriends] = useState([]);
   const [potentialFriends, setPotentialFriends] = useState([]);

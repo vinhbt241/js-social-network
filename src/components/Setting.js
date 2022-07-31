@@ -9,10 +9,10 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 const Setting = () => {
   const currentUser = JSON.parse(localStorage.user);
 
-  const UPDATE_NAME_API_URL = 'http://127.0.0.1:3000/api/users/update_name';
-  const UPDATE_PASSWORD_API_URL = 'http://127.0.0.1:3000/api/users/update_password';
-  const UPDATE_AVATAR_API_URL = 'http://127.0.0.1:3000/api/users/update_avatar';
-  const UPDATE_BACKGROUND_API_URL = 'http://127.0.0.1:3000/api/users/update_background_image';
+  const UPDATE_NAME_API_URL = 'https://virtuoso-social-network.herokuapp.com/api/users/update_name';
+  const UPDATE_PASSWORD_API_URL = 'https://virtuoso-social-network.herokuapp.com/api/users/update_password';
+  const UPDATE_AVATAR_API_URL = 'https://virtuoso-social-network.herokuapp.com/api/users/update_avatar';
+  const UPDATE_BACKGROUND_API_URL = 'https://virtuoso-social-network.herokuapp.com/api/users/update_background_image';
 
   const [displayProfileUpdate, setDisplayProfileUpdate] = useState(false);
   const [displayAccountUpdate, setDisplayAccountUpdate] = useState(false);

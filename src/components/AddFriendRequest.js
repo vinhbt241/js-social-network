@@ -4,7 +4,7 @@ import { UserInfo } from "./UserInfo";
 const AddFriendRequest = (props) => {
   const currentUser = JSON.parse(localStorage.user);
 
-  const SEND_FRIEND_REQUEST_API_URL = "http://127.0.0.1:3000/api/users/send_friend_request";
+  const SEND_FRIEND_REQUEST_API_URL = "https://virtuoso-social-network.herokuapp.com/api/users/send_friend_request";
 
   const [requestSent, setRequestSent] = useState(false);
 

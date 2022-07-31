@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-  const LOGIN_API_URL = "http://127.0.0.1:3000/api/sessions";
+  const LOGIN_API_URL = "https://virtuoso-social-network.herokuapp.com/api/sessions";
 
   const navigate = useNavigate();
 

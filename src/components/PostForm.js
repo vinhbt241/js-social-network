@@ -4,7 +4,7 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 const PostForm = (props) => {
-  const CREATE_POST_API_URL = "http://127.0.0.1:3000/api/posts";
+  const CREATE_POST_API_URL = "https://virtuoso-social-network.herokuapp.com/api/posts";
 
   const [postImageUrl, setPostImageUrl] = useState("");
 

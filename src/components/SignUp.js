@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 
 const SignUp = () => {
-  const SIGN_UP_API_URL = "http://127.0.0.1:3000/api/users";
+  const SIGN_UP_API_URL = "https://virtuoso-social-network.herokuapp.com/api/users";
 
   const navigate = useNavigate();
 

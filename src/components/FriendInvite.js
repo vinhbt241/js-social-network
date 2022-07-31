@@ -4,8 +4,8 @@ import { UserInfo } from "./UserInfo"
 const FriendInvite = (props) => {
   const currentUser = JSON.parse(localStorage.user);
 
-  const ACCEPT_PENDING_REQUEST_API_URL = "http://127.0.0.1:3000/api/users/accept_pending_request";
-  const DECLINE_FRIEND_REQUEST_API_URL = "http://127.0.0.1:3000/api/users/decline_friend_request";
+  const ACCEPT_PENDING_REQUEST_API_URL = "https://virtuoso-social-network.herokuapp.com/api/users/accept_pending_request";
+  const DECLINE_FRIEND_REQUEST_API_URL = "https://virtuoso-social-network.herokuapp.com/api/users/decline_friend_request";
 
   const [acceptSent, setAcceptSent] = useState(false);
   const [declineSent, setDeclineSent] = useState(false);

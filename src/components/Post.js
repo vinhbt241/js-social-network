@@ -8,10 +8,10 @@ import { getData } from '../utilities';
 import { v4 as uuidv4 } from 'uuid';
 
 const Post = (props) => {
-  const COMMENTS_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/comments`;
-  const LIKES_API_URL = `http://127.0.0.1:3000/api/posts/${props.postID}/likes`;
-  const CREATE_COMMENT_API_URL = "http://127.0.0.1:3000/api/comments";
-  const MODIFY_LIKE_API_URL = "http://127.0.0.1:3000/api/likes"
+  const COMMENTS_API_URL = `https://virtuoso-social-network.herokuapp.com/api/posts/${props.postID}/comments`;
+  const LIKES_API_URL = `https://virtuoso-social-network.herokuapp.com/api/posts/${props.postID}/likes`;
+  const CREATE_COMMENT_API_URL = "https://virtuoso-social-network.herokuapp.com/api/comments";
+  const MODIFY_LIKE_API_URL = "https://virtuoso-social-network.herokuapp.com/api/likes"
 
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);

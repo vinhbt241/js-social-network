@@ -8,8 +8,8 @@ import { Sidebar } from "./Sidebar"
 const Home = () => {
   const currentUser = JSON.parse(localStorage.user);
 
-  const FRIENDS_API_URL = `http://127.0.0.1:3000/api/users/${currentUser.id}/friends`;
-  const POSTS_API_URL = `http://127.0.0.1:3000/api/users/${currentUser.id}/user_and_friends_posts`;
+  const FRIENDS_API_URL = `https://virtuoso-social-network.herokuapp.com/api/users/${currentUser.id}/friends`;
+  const POSTS_API_URL = `https://virtuoso-social-network.herokuapp.com/api/users/${currentUser.id}/user_and_friends_posts`;
 
   const [friends, setFriends] = useState([]);
   const [posts, setPosts] = useState([]);
