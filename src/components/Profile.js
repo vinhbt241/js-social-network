@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { getData } from "../utilities";
 import { useParams } from "react-router-dom";
 
+import DefaultBackground from "../images/default_background.jpg"
+
 const Profile = () => {
   let params = useParams();
   const userId = params.id
@@ -42,7 +44,7 @@ const Profile = () => {
     <div className="Profile normal-page">
       <Sidebar />
       <div className="user-img-section">
-        <img src={userInfo.background_image_url} alt="" className="user-bg-img"/>
+        <img src={userInfo.background_image_url || DefaultBackground} alt="" className="user-bg-img"/>
         <UserInfo user={userInfo} classToAdd="user-info-in-profile"/>
       </div>
 
