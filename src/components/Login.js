@@ -51,7 +51,7 @@ const Login = (props) => {
         <input className="authentication-submit" type="submit" value="Log in" />
       </form>
 
-      <Link to="/sign-up" className="unstyle-link authentication-link">
+      <Link to="/js-social-network/sign-up" className="unstyle-link authentication-link">
         New member? Click here to sign up.
       </Link>
     </div>

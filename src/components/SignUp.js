@@ -36,7 +36,7 @@ const SignUp = () => {
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("token", data.token);
   
-        navigate('/');
+        navigate('/js-social-network/');
       }
     }
   }
@@ -67,7 +67,7 @@ const SignUp = () => {
         <input className="authentication-submit" type="submit" value="Sign Up" />
       </form>
 
-      <Link to="/login" className="unstyle-link authentication-link">
+      <Link to="/js-social-network/login" className="unstyle-link authentication-link">
         Already have an account? Click here to log in.
       </Link>
     </div>

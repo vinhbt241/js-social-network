@@ -13,7 +13,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const processLogout = () => {
-    navigate('/login');
+    navigate('/js-social-network/login');
 
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("user");
@@ -27,22 +27,22 @@ const Sidebar = () => {
 
       <ul>
         <li className='NavLink'>
-          <Link to="/" className="unstyle-link">
+          <Link to="/js-social-network/" className="unstyle-link">
             <FontAwesomeIcon icon={faHome}/> Home
           </Link>
         </li>
         <li className='NavLink'>
-          <Link to={`/profile/${currentUser.id}`} className="unstyle-link">
+          <Link to={`/js-social-network/profile/${currentUser.id}`} className="unstyle-link">
             <FontAwesomeIcon icon={faUserCircle}/> Profile
           </Link>
         </li>
         <li className='NavLink'>
-          <Link to="/friend-requests" className="unstyle-link">
+          <Link to="/js-social-network/friend-requests" className="unstyle-link">
             <FontAwesomeIcon icon={faUserFriends}/> Friends Requests
           </Link>
         </li>
         <li className='NavLink'>
-          <Link to="/setting" className="unstyle-link">
+          <Link to="/js-social-network/setting" className="unstyle-link">
             <FontAwesomeIcon icon={faScrewdriverWrench}/> Settings
           </Link>
         </li>
