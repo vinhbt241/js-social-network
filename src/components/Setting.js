@@ -9,12 +9,78 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 const Setting = () => {
   const currentUser = JSON.parse(localStorage.user);
 
+  const UPDATE_NAME_API_URL = 'http://127.0.0.1:3000/api/users/update_name'
+  const UPDATE_PASSWORD_API_URL = 'http://127.0.0.1:3000/api/users/update_password'
+
   const [displayProfileUpdate, setDisplayProfileUpdate] = useState(false);
   const [displayAccountUpdate, setDisplayAccountUpdate] = useState(false);
   const [displayUpdateNameForm, setDisplayUpdateNameForm] = useState(false);
   const [displayUpdatePasswordForm, setDisplayUpdatePasswordForm] = useState(false);
   const [displayUpdateAvatarForm, setDisplayUpdateAvatarForm] = useState(false);
   const [displayUpdateBgImgForm, setDisplayUpdateBgImgForm] = useState(false);
+
+  const [nameUpdated, setNameUpdated] = useState(false);
+  const [passwordUpdated, setPasswordUpdated] = useState(false);
+
+  const processUpdateName = async (event) => {
+    event.preventDefault();
+
+    let newName = event.target["name"].value;
+
+    const response = await fetch(UPDATE_NAME_API_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        name: newName,
+        user_id: currentUser.id
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Accept: "application/json",
+        Authorization: localStorage.token
+      }
+    }) 
+
+    const data = await response.json();
+
+    if (data.error) {
+      alert("Can't update name now, please try again later");
+    } else {
+      setNameUpdated(true);
+    }
+  }
+
+  const processUpdatePassword = async (event) => {
+    event.preventDefault();
+
+    let password = event.target["password"].value;
+    let passWordConfirm = event.target["password-confirmation"].value;
+
+    if (password !== passWordConfirm) {
+      alert("Password does not match, please try again");
+      return;
+    }
+
+    const response = await fetch(UPDATE_PASSWORD_API_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        password: password,
+        user_id: currentUser.id
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Accept: "application/json",
+        Authorization: localStorage.token
+      }
+    }) 
+
+    const data = await response.json();
+
+    if (data.error) {
+      alert("Can't update password now, please try again later");
+    } else {
+      setPasswordUpdated(true);
+    }
+  }
 
   return(
     <div className="Setting normal-page">
@@ -106,14 +172,18 @@ const Setting = () => {
       {
         displayUpdateNameForm &&
         <div className="fixed-background">
-          <form className="display-container">
+          <form className="display-container" onSubmit={processUpdateName}>
 
             <label className="update-form-label">
               Update name
               <input className="update-form-input" type="text" name="name" required />
             </label>
 
-            <input className="update-form-submit" type="submit" value="Change" />
+            <input 
+              className="update-form-submit" 
+              type="submit" 
+              value={nameUpdated ? "Name changed" : "Change"} 
+              disabled={nameUpdated} />
 
             <button 
               className="close-form-button" onClick={ () => {
@@ -129,7 +199,7 @@ const Setting = () => {
       {
         displayUpdatePasswordForm &&
         <div className="fixed-background">
-          <form className="display-container">
+          <form className="display-container" onSubmit={processUpdatePassword}>
             <label className="update-form-label">
               New password
               <input className="update-form-input" type="password" name="password" required/>
@@ -140,7 +210,11 @@ const Setting = () => {
               <input className="update-form-input" type="password" name="password-confirmation" required/>
             </label>
 
-            <input className="update-form-submit" type="submit" value="Change" />
+            <input 
+              className="update-form-submit" 
+              type="submit" 
+              value={passwordUpdated ? "Password changed" : "Change"} 
+              disabled={passwordUpdated} />
 
             <button 
                 className="close-form-button" onClick={ () => {

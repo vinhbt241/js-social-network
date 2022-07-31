@@ -514,10 +514,12 @@ ul {
   filter: brightness(80%);
 }
 
-button:disabled {
+button:disabled,
+.update-form-submit:disabled {
   background-color: var(--secondary);
   color: var(--primary);
   border: 1px solid var(--primary);
+  pointer-events: none;
 }
 
 .authentication-link {
