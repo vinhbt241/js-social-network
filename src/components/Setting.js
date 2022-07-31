@@ -9,8 +9,10 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 const Setting = () => {
   const currentUser = JSON.parse(localStorage.user);
 
-  const UPDATE_NAME_API_URL = 'http://127.0.0.1:3000/api/users/update_name'
-  const UPDATE_PASSWORD_API_URL = 'http://127.0.0.1:3000/api/users/update_password'
+  const UPDATE_NAME_API_URL = 'http://127.0.0.1:3000/api/users/update_name';
+  const UPDATE_PASSWORD_API_URL = 'http://127.0.0.1:3000/api/users/update_password';
+  const UPDATE_AVATAR_API_URL = 'http://127.0.0.1:3000/api/users/update_avatar';
+  const UPDATE_BACKGROUND_API_URL = 'http://127.0.0.1:3000/api/users/update_background_image';
 
   const [displayProfileUpdate, setDisplayProfileUpdate] = useState(false);
   const [displayAccountUpdate, setDisplayAccountUpdate] = useState(false);
@@ -22,7 +24,9 @@ const Setting = () => {
   const [nameUpdated, setNameUpdated] = useState(false);
   const [passwordUpdated, setPasswordUpdated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState(currentUser.avatar_url);
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState(currentUser.background_image_url)
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState(currentUser.background_image_url);
+  const [avatarUpdated, setAvatarUpdated] = useState(false);
+  const [backgroundUpdated, setBackgroundUpdated] = useState(false);
 
   const processUpdateName = async (event) => {
     event.preventDefault();
@@ -104,6 +108,66 @@ const Setting = () => {
     }
 
     reader.readAsDataURL(event.target.files[0]);
+  }
+
+  const processUpdateAvatar = async (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData();
+
+    formData.append('user_id', currentUser.id);
+    if(typeof form.avatar.files[0] !== 'undefined' ) {
+      formData.append('avatar', form.avatar.files[0], form.avatar.value);
+    }
+
+    const response = await fetch(UPDATE_AVATAR_API_URL, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: localStorage.token
+      }
+    })
+
+    const data = await response.json();
+
+    if (data.error) {
+      alert("Can't update avatar now, please try again later");
+    } else {
+      setAvatarUpdated(true);
+
+      localStorage.setItem("user", JSON.stringify(data.user));
+    }
+  }
+
+  const processUpdateBackground = async (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData();
+
+    formData.append('user_id', currentUser.id);
+    if(typeof form.background_image.files[0] !== 'undefined' ) {
+      formData.append('background_image', form.background_image.files[0], form.background_image.value);
+    }
+
+    const response = await fetch(UPDATE_BACKGROUND_API_URL, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: localStorage.token
+      }
+    })
+
+    const data = await response.json();
+
+    if (data.error) {
+      alert("Can't update background now, please try again later");
+    } else {
+      setBackgroundUpdated(true);
+
+      localStorage.setItem("user", JSON.stringify(data.user));
+    }
   }
 
   return(
@@ -254,7 +318,7 @@ const Setting = () => {
       {
         displayUpdateAvatarForm &&
         <div className="fixed-background">
-          <form className="display-container">
+          <form className="display-container" onSubmit={processUpdateAvatar}>
             <strong className="update-form-name">Update avatar</strong>
             <label className="update-form-label">
               <div className="update-image-click">
@@ -263,14 +327,20 @@ const Setting = () => {
 
               <input 
                 type="file" 
+                name="avatar"
                 className="hidden-input" 
                 accept="image/*"
-                onChange={displayPreviewAvatar}/>
+                onChange={displayPreviewAvatar}
+                required/>
             </label>
 
             <img src={avatarUrl} alt="" className="user-avatar-in-settings"/>
 
-            <input className="update-form-submit" type="submit" value="Change" />
+            <input 
+              className="update-form-submit" 
+              type="submit" 
+              value={avatarUpdated ? "Avatar updated" : "Change"}
+              disabled={avatarUpdated} />
 
             <button 
                 className="close-form-button" onClick={ () => {
@@ -286,7 +356,7 @@ const Setting = () => {
       {
         displayUpdateBgImgForm &&
         <div className="fixed-background">
-          <form className="display-container">
+          <form className="display-container" onSubmit={processUpdateBackground}>
             <strong className="update-form-name">Update background image</strong>
             <label className="update-form-label">
               <div className="update-image-click">
@@ -297,12 +367,18 @@ const Setting = () => {
                 type="file" 
                 className="hidden-input" 
                 accept="image/*"
-                onChange={displayPreviewBackground}/>
+                onChange={displayPreviewBackground}
+                name="background_image"
+                required/>
             </label>
 
             <img src={backgroundImageUrl} alt="" className="user-bg-img-in-settings"/>
 
-            <input className="update-form-submit" type="submit" value="Change" />
+            <input 
+              className="update-form-submit" 
+              type="submit" 
+              value={backgroundUpdated ? "Background updated" : "Change"}
+              disabled={backgroundUpdated} />
 
             <button 
                 className="close-form-button" onClick={ () => {
