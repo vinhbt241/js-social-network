@@ -12,7 +12,7 @@ This website is a clone of Facebook. Its functions includes:
 Created as the final project for Learning JavaScript curriculum from The Odin Project.
 
 ## Live preview
-- You can checkout the website [here](https://vinhbt241.github.io/js-social-network/login).
+- You can checkout the website [here](https://vinhbt241.github.io/js-social-network/).
 - If you interested in the API, clik [here](https://github.com/vinhbt241/js-social-network-api).
 
 ## What I've used 
